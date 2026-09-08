@@ -84,6 +84,14 @@ public class VentanaPrincipal {
 			}
 		});
 		mnNewMenu_1.add(mntmAltaModificacin);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Salir");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		menuBar.add(mntmNewMenuItem_2);
 	}
 
 }
