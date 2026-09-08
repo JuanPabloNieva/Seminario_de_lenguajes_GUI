@@ -19,9 +19,10 @@ public class AltaModUsuario extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField tfUsuario;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField tfPassword;
+	private JTextField tfNombre;
+	private JTextField tfEmail;
+	private JComboBox cbRol;
 
 	/**
 	 * Launch the application.
@@ -57,7 +58,11 @@ public class AltaModUsuario extends JDialog {
 				JButton okButton = new JButton("Aceptar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						System.out.println(e);
+						System.out.println("Usuario: " + tfUsuario.getText());
+						System.out.println("Contraseña: " + tfPassword.getText());
+						System.out.println("Nombre: " + tfNombre.getText());
+						System.out.println("Email: " + tfEmail.getText());
+						System.out.println("Rol: " + cbRol.getSelectedItem());
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -112,9 +117,9 @@ public class AltaModUsuario extends JDialog {
 					panel_1.add(lblContrasenia);
 				}
 				{
-					textField_1 = new JTextField();
-					textField_1.setColumns(15);
-					panel_1.add(textField_1);
+					tfPassword = new JTextField();
+					tfPassword.setColumns(15);
+					panel_1.add(tfPassword);
 				}
 			}
 			{
@@ -131,9 +136,9 @@ public class AltaModUsuario extends JDialog {
 					panel_1.add(lblNombre);
 				}
 				{
-					textField_2 = new JTextField();
-					textField_2.setColumns(15);
-					panel_1.add(textField_2);
+					tfNombre = new JTextField();
+					tfNombre.setColumns(15);
+					panel_1.add(tfNombre);
 				}
 			}
 			{
@@ -150,9 +155,9 @@ public class AltaModUsuario extends JDialog {
 					panel_1.add(lblEmail);
 				}
 				{
-					textField_3 = new JTextField();
-					textField_3.setColumns(15);
-					panel_1.add(textField_3);
+					tfEmail = new JTextField();
+					tfEmail.setColumns(15);
+					panel_1.add(tfEmail);
 				}
 			}
 			{
@@ -169,7 +174,7 @@ public class AltaModUsuario extends JDialog {
 					panel_1.add(lblRol);
 				}
 				{
-					JComboBox cbRol = new JComboBox(roles);
+					cbRol = new JComboBox(roles);
 					cbRol.setPreferredSize(new Dimension(125, 22));
 					cbRol.addInputMethodListener(null);
 					panel_1.add(cbRol);

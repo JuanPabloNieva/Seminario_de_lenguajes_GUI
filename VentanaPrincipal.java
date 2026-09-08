@@ -73,6 +73,23 @@ public class VentanaPrincipal {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Listado");
 		mntmNewMenuItem_1.setHorizontalTextPosition(SwingConstants.LEFT);
 		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenu mnNewMenu_1 = new JMenu("Roles");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmAltaModificacin = new JMenuItem("Alta / Modificación");
+		mntmAltaModificacin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					AltaModRol dialog = new AltaModRol();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception exc) {
+					exc.printStackTrace();
+				}
+			}
+		});
+		mnNewMenu_1.add(mntmAltaModificacin);
 	}
 
 }

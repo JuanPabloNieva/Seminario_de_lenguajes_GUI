@@ -9,7 +9,7 @@ public class Rol {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.codigo = codigo;
-		this.estado = false;
+		this.estado = true;
 	}
 	
 	public int getCodigoRol() {
