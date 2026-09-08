@@ -28,19 +28,22 @@ public class AltaModUsuario extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			AltaModUsuario dialog = new AltaModUsuario();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+
+			//AltaModUsuario dialog = new AltaModUsuario();
+			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			//dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 
+	
+	
 	/**
 	 * Create the dialog.
 	 */
-	public AltaModUsuario() {
+	public AltaModUsuario(Rol[] roles) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -166,8 +169,9 @@ public class AltaModUsuario extends JDialog {
 					panel_1.add(lblRol);
 				}
 				{
-					JComboBox cbRol = new JComboBox();
+					JComboBox cbRol = new JComboBox(roles);
 					cbRol.setPreferredSize(new Dimension(125, 22));
+					cbRol.addInputMethodListener(null);
 					panel_1.add(cbRol);
 				}
 			}

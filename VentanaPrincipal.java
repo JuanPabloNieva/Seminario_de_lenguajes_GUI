@@ -28,6 +28,14 @@ public class VentanaPrincipal {
 			}
 		});
 	}
+	
+	private Rol[] createRoles() {
+		Rol[] roles = new Rol[] {
+				new Rol("ADMIN", "Permisos Totales", 1),
+				new Rol("USUARIO", "Permisos Básicos", 2)
+		};
+		return roles;
+	}
 
 	/**
 	 * Create the application.
@@ -49,11 +57,12 @@ public class VentanaPrincipal {
 		
 		JMenu mnNewMenu = new JMenu("Usuarios");
 		menuBar.add(mnNewMenu);
-		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Alta / Modificación");
+	
+		Rol[] roles = createRoles();
+ 		JMenuItem mntmNewMenuItem = new JMenuItem("Alta / Modificación");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AltaModUsuario ventanaAltaMod = new AltaModUsuario();
+				AltaModUsuario ventanaAltaMod = new AltaModUsuario(roles);
 				ventanaAltaMod.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 				ventanaAltaMod.setVisible(true);
 			}

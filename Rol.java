@@ -11,4 +11,13 @@ public class Rol {
 		this.codigo = codigo;
 		this.estado = false;
 	}
+	
+	public int getCodigoRol() {
+		return this.codigo;
+	}
+	
+	@Override
+	public String toString() {
+		return this.nombre;
+	}
 }
