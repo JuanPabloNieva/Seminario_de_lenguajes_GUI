@@ -6,6 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -20,7 +21,8 @@ public class AltaModRol extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
+	private JTextField tfNombre;
+	private JTextArea taDescripcion;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
@@ -28,9 +30,9 @@ public class AltaModRol extends JDialog {
 	 */
 	public static void main(String[] args) {
 		try {
-			AltaModRol dialog = new AltaModRol();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+			//AltaModRol dialog = new AltaModRol();
+			//dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			//dialog.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -39,7 +41,7 @@ public class AltaModRol extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public AltaModRol() {
+	public AltaModRol(ArrayList<Rol> roles) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,10 +57,10 @@ public class AltaModRol extends JDialog {
 				panel.add(lblNombre);
 			}
 			{
-				textField = new JTextField();
-				textField.setHorizontalAlignment(SwingConstants.CENTER);
-				panel.add(textField);
-				textField.setColumns(10);
+				tfNombre = new JTextField();
+				tfNombre.setHorizontalAlignment(SwingConstants.CENTER);
+				panel.add(tfNombre);
+				tfNombre.setColumns(10);
 			}
 		}
 		{
@@ -69,10 +71,10 @@ public class AltaModRol extends JDialog {
 				panel.add(lblDescripcion);
 			}
 			{
-				JTextArea textArea = new JTextArea();
-				textArea.setRows(3);
-				textArea.setColumns(25);
-				panel.add(textArea);
+				taDescripcion = new JTextArea();
+				taDescripcion.setRows(3);
+				taDescripcion.setColumns(25);
+				panel.add(taDescripcion);
 			}
 		}
 		{
@@ -83,14 +85,16 @@ public class AltaModRol extends JDialog {
 				panel.add(lblNewLabel_2);
 			}
 			{
-				JRadioButton rdbtnNewRadioButton = new JRadioButton("Activado");
-				buttonGroup.add(rdbtnNewRadioButton);
-				panel.add(rdbtnNewRadioButton);
+				JRadioButton rbActivado = new JRadioButton("Activado");
+				rbActivado.setActionCommand("Activado");
+				buttonGroup.add(rbActivado);
+				panel.add(rbActivado);
 			}
 			{
-				JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Desactivado");
-				buttonGroup.add(rdbtnNewRadioButton_1);
-				panel.add(rdbtnNewRadioButton_1);
+				JRadioButton rdDesactivado = new JRadioButton("Desactivado");
+				rdDesactivado.setActionCommand("Desactivado");
+				buttonGroup.add(rdDesactivado);
+				panel.add(rdDesactivado);
 			}
 		}
 		{
@@ -101,7 +105,19 @@ public class AltaModRol extends JDialog {
 				JButton okButton = new JButton("Aceptar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Rol rol = new Rol();
+						if (buttonGroup.getSelection() != null) {
+							String seleccionado = buttonGroup.getSelection().getActionCommand();
+							Rol rol;
+							if (seleccionado.equals("Activado")) {
+								rol = new Rol(tfNombre.getText(), taDescripcion.getText(), true);
+							} else {
+								rol = new Rol(tfNombre.getText(), taDescripcion.getText(), false);
+							}
+							
+							roles.add(rol);
+							dispose();
+						}
+						
 					}
 				});
 				okButton.setActionCommand("OK");

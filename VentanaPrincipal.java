@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.SwingConstants;
 public class VentanaPrincipal {
 
 	private JFrame frame;
+	private ArrayList<Rol> roles = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -29,13 +31,6 @@ public class VentanaPrincipal {
 		});
 	}
 	
-	private Rol[] createRoles() {
-		Rol[] roles = new Rol[] {
-				new Rol("ADMIN", "Permisos Totales", 1),
-				new Rol("USUARIO", "Permisos Básicos", 2)
-		};
-		return roles;
-	}
 
 	/**
 	 * Create the application.
@@ -58,7 +53,6 @@ public class VentanaPrincipal {
 		JMenu mnNewMenu = new JMenu("Usuarios");
 		menuBar.add(mnNewMenu);
 	
-		Rol[] roles = createRoles();
  		JMenuItem mntmNewMenuItem = new JMenuItem("Alta / Modificación");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -81,7 +75,7 @@ public class VentanaPrincipal {
 		mntmAltaModificacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					AltaModRol dialog = new AltaModRol();
+					AltaModRol dialog = new AltaModRol(roles);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception exc) {

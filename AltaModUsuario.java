@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class AltaModUsuario extends JDialog {
@@ -44,7 +45,7 @@ public class AltaModUsuario extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public AltaModUsuario(Rol[] roles) {
+	public AltaModUsuario(ArrayList<Rol> roles) {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -63,6 +64,7 @@ public class AltaModUsuario extends JDialog {
 						System.out.println("Nombre: " + tfNombre.getText());
 						System.out.println("Email: " + tfEmail.getText());
 						System.out.println("Rol: " + cbRol.getSelectedItem());
+						dispose();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -174,7 +176,7 @@ public class AltaModUsuario extends JDialog {
 					panel_1.add(lblRol);
 				}
 				{
-					cbRol = new JComboBox(roles);
+					cbRol = new JComboBox(roles.toArray());
 					cbRol.setPreferredSize(new Dimension(125, 22));
 					cbRol.addInputMethodListener(null);
 					panel_1.add(cbRol);
